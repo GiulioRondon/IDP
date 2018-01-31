@@ -11,7 +11,6 @@
 #   De functie ontwijkt obstakels
 # De functie berekend de snelste weg en geeft deze in een multidimensional list in de form: [[xCor, yCor], [xCor, yCor]]
 #####################
-
 import copy
 
 # Eerst het maken van alle coordinaten, dit zijn er 960 in totaal, een resolutie van 40x24
@@ -29,29 +28,13 @@ def genCor(minX, maxX, minY, maxY):
             lstCor.append(coordinate)  # De coordinaat wordt toegevoegd aan lstCor
     return lstCor
 
-gridCor = genCor(1, 40, 1, 24)
-
-print(gridCor[-1])
-
 #Nu het generen van test obstakels
 obstaclesCor = []
 for x in range(10, 12):
     for y in range(1, 14):
         coordinateOb = [x, y]
         obstaclesCor.append(coordinateOb)
-print("Obstacles = {} to {}".format(obstaclesCor[0], obstaclesCor[-1]))
 
-# Daarna, omdat dit een test is, voert de gebruiker de start coordinaten in.
-startCoordinateX = int(input("Give x coordinate: "))
-startCoordinate.append(startCoordinateX)
-startCoordinateY = int(input("Give y coordinate: "))
-startCoordinate.append(startCoordinateY)
-
-# Daarna, omdat dit een test is, voert de gebruiker de doel/eindbestemming coordinaten in.
-DestinationCoordinateX = int(input("Give x coordinate: "))
-DestinationCoordinate.append(DestinationCoordinateX)
-DestinationCoordinateY = int(input("Give y coordinate: "))
-DestinationCoordinate.append(DestinationCoordinateY)
 
 # Hier wordt een functie aangemaakt om de coordinaten van alle "buren" te berekenen
 # en alle negatieve coordinaten weghaalt
@@ -192,12 +175,3 @@ def Dijkstra(grid, source, destination, obstacles):
             print("Infinate loop? Something went wrong!")
             break
     return route_routeCors
-
-
-theRoute = Dijkstra(gridCor, startCoordinate, DestinationCoordinate, obstaclesCor)
-
-print("+++++++++++++++++++++++++\n{}\n+++++++++++++++++++++++++".format(theRoute))
-
-#vertexx = [0, 0, -1, [-1,-1], [], 0]
-
-#neighboursCal(vertexx, 4)
