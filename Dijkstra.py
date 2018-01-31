@@ -10,13 +10,11 @@
 #   De functie genereerd de benodigde vertexen.
 #   De functie ontwijkt obstakels
 # De functie berekend de snelste weg en geeft deze in een multidimensional list in de form: [[xCor, yCor], [xCor, yCor]]
+#
+# Omdat bepaalde functies uit deze file worden gebruikt door de functie Dijkstra, moet deze file geimporteerd worden
+# met de regel: "from Dijkstra import *"
 #####################
 import copy
-
-# Eerst het maken van alle coordinaten, dit zijn er 960 in totaal, een resolutie van 40x24
-gridCor = []                # De lijst waar alle coordinaten in worden gezet, in de form [[xCor, yCor], [xCor, yCor]]
-startCoordinate = []        # De lijst waar de start coordinaten in worden gezet, in de form [xCor, yCor]
-DestinationCoordinate = []  # De lijst waar de coordinaten van het doel in worden gezet, in de form [xCor, yCor]
 
 def genCor(minX, maxX, minY, maxY):
     maxX += 1
@@ -27,13 +25,6 @@ def genCor(minX, maxX, minY, maxY):
             coordinate = [x, y]         # Een lijst met een coordinaat
             lstCor.append(coordinate)  # De coordinaat wordt toegevoegd aan lstCor
     return lstCor
-
-#Nu het generen van test obstakels
-obstaclesCor = []
-for x in range(10, 12):
-    for y in range(1, 14):
-        coordinateOb = [x, y]
-        obstaclesCor.append(coordinateOb)
 
 
 # Hier wordt een functie aangemaakt om de coordinaten van alle "buren" te berekenen
