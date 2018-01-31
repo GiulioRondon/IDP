@@ -17,6 +17,9 @@
 import copy
 
 def genCor(minX, maxX, minY, maxY):
+    """The function that generates the coordinates for the grid, the output is a multidimensional list
+    The parameters minX and minY are the lowest x and y values in the grid
+    The parameters maxX and maxY are the highest x and y values in the grid"""
     maxX += 1
     maxY += 1
     lstCor = []
@@ -30,7 +33,8 @@ def genCor(minX, maxX, minY, maxY):
 # Hier wordt een functie aangemaakt om de coordinaten van alle "buren" te berekenen
 # en alle negatieve coordinaten weghaalt
 def neighboursCal(vertex, xMax, yMax):
-    """Function to calculate all neighbours, this function needs optimization"""
+    """Function to calculate all neighbours, this function could use optimization though
+    The parameter vertex is the vertex """
     deleteList = []                                     # De lijst die gevult gaat worden met alle negatieve coordinaten
     neighboursList = []                             # De lijst die gevuld gaat worden met alle coordinaten van de buren
     neighboursList.append([vertex[0], vertex[1] - 1, 1])# In dit blok code worden alle coordinaten een voor een berekend
@@ -54,7 +58,9 @@ def neighboursCal(vertex, xMax, yMax):
     return neighboursList
 
 def FindVertexFromCor(ListWithVertex, coordinate):
-    """Function to convert a coordinate to a vertex found in a grid"""
+    """Function to convert a coordinate to a vertex found in a grid
+    The parameter ListWithVertex is the list that contains the vertex
+    The parameter coordinate is the coordinate in the form [xCor, yCor]"""
     for vertex in ListWithVertex:
         vertexCor = []
         vertexCor.append(vertex[0])
@@ -67,7 +73,9 @@ def FindVertexFromCor(ListWithVertex, coordinate):
 def Dijkstra(grid, source, destination, obstacles):
     """The function to calculate the shortest route with dijkstra's
     The parameter grid should be in the form [[xCor, yCor], [xCor yCor]]
-    The parameter source should be in the form [xCor, yCor]"""
+    The parameter source should be in the form [xCor, yCor]
+    The parameter destination should be in the form [xCor, yCor]
+    The parameter obstacles should be in the form [[xCor, yCor], [xCor yCor]]"""
 
     unvisited = copy.deepcopy(grid) # unvisited wordt een copy van het grid, wanneer een coordinaat is bezocht door het
                                     # algoritme wordt dit coordinaat uit unvisited gehaald.
@@ -84,8 +92,10 @@ def Dijkstra(grid, source, destination, obstacles):
         vertex.append([])
         vertex.append(0)
         vertex.append(0)
-        vertex[4] = neighboursCal(vertex, 40, 24)
-    # print(grid_Ext[3])
+        vertex[4] = neighboursCal(vertex, grid[-1][0], grid[-1][1])
+    # print(grid[-1])
+    # print(grid[-1][0])
+    # print(grid[-1][1])
 
     # Zet waarde obstacle in alle obstacle vertexen op 1
     for obstacle in obstacles:
