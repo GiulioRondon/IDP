@@ -34,7 +34,9 @@ def genCor(minX, maxX, minY, maxY):
 # en alle negatieve coordinaten weghaalt
 def neighboursCal(vertex, xMax, yMax):
     """Function to calculate all neighbours, this function could use optimization though
-    The parameter vertex is the vertex """
+    The parameter vertex is the vertex whose neighbours are to be calculated
+    The parameters xMax and yMax are the maximum values that are allowed in grid and is used to filter out non-existing
+    neighbours"""
     deleteList = []                                     # De lijst die gevult gaat worden met alle negatieve coordinaten
     neighboursList = []                             # De lijst die gevuld gaat worden met alle coordinaten van de buren
     neighboursList.append([vertex[0], vertex[1] - 1, 1])# In dit blok code worden alle coordinaten een voor een berekend
